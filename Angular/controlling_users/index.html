@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html ng-app = 'app'>
+  <head>
+    <meta charset="utf-8">
+    <title>Users</title>
+    <script src = 'bower_components/angular/angular.js' charset="utf-8"></script>
+    <script src="main.js"></script>
+
+    <!-- <script type="text/javascript">
+      var app = angular.module('app', [])
+    </script> -->
+
+  </head>
+  <body>
+    <div ng-controller = 'userController'>
+      <form ng-submit = "submit()">
+        First Name<input type="text" name="first_name" value="" ng-model = "first_name">
+        Last Name<input type="text" name="last_name" value="" ng-model = "last_name">
+        Favorite Language<input type="text" name="favorite_language" value="" ng-model = "favorite_language">
+        <input type="submit" name="" value="Create User">
+      </form>
+      Search by: <input type="text" ng-model = "filter_by" placeholder="Search user...">
+
+      <table>
+        <ul>
+          <tr>
+            <th ng-click="sort='first_name'">First Name</th>
+            <th ng-click="sort='last_name'">Last Name</th>
+            <th ng-click="sort='favorite_language'">Favorite Language</th>
+            <th ng-click="sort='created_at'">Created At</th>
+            <th>Actions</th>
+
+          </tr>
+          <tr ng-repeat = "user in users | filter: filter_by | orderBy: sort">
+            <td>{{ user.first_name }}</td>
+            <td>{{ user.last_name }}</td>
+            <td>{{ user.favorite_language }}</td>
+            <td>{{ user.created_at | date: 'medium' }}</td>
+            <td><button ng-click = "delete(user)">Delete User</button></td>
+
+          </tr>
+        </ul>
+      </table>
+
+    </div>
+  </body>
+</html>
+<style>
+* {
+    padding: 0px;
+    margin: 0px;
+}
+#searchbar {
+    margin: 10px;
+}
+table {
+    border-collapse: collapse;
+    width: 50%;
+    margin-left: 5px;
+}
+table, th, td {
+    border: 2px solid red;
+}
+th {
+    text-align: center;
+    padding: 10px;
+    background-color: teal;
+    color: white;
+}
+td{
+    vertical-align: middle;
+    padding: 10px;
+    text-align: center;
+}
+</style>
