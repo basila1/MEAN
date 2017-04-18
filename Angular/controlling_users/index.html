@@ -14,8 +14,8 @@
   <body>
     <div ng-controller = 'userController'>
       <form ng-submit = "submit()">
-        First Name<input type="text" name="first_name" value="" ng-model = "first_name">
-        Last Name<input type="text" name="last_name" value="" ng-model = "last_name">
+        First Name<input type="text" name="first_name" value="" ng-model = "first_name"><br>
+        Last Name<input type="text" name="last_name" value="" ng-model = "last_name"><br>
         Favorite Language<input type="text" name="favorite_language" value="" ng-model = "favorite_language">
         <input type="submit" name="" value="Create User">
       </form>
@@ -24,10 +24,10 @@
       <table>
         <ul>
           <tr>
-            <th ng-click="sort='first_name'">First Name</th>
-            <th ng-click="sort='last_name'">Last Name</th>
-            <th ng-click="sort='favorite_language'">Favorite Language</th>
-            <th ng-click="sort='created_at'">Created At</th>
+            <th ng-click="sort='first_name'"><a href="#">First Name</a></th>
+            <th ng-click="sort='last_name'"><a href="#">Last Name</a></th>
+            <th ng-click="sort='favorite_language'"><a href="#">Favorite Language</a></th>
+            <th ng-click="sort='created_at'"><a href="#">Created At</a></th>
             <th>Actions</th>
 
           </tr>
@@ -59,13 +59,13 @@ table {
     margin-left: 5px;
 }
 table, th, td {
-    border: 2px solid red;
+    border: 2px solid #196666;
 }
 th {
     text-align: center;
     padding: 10px;
-    background-color: teal;
-    color: white;
+    background-color: #c2f0f0;
+    color: purple;
 }
 td{
     vertical-align: middle;
