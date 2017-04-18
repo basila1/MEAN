@@ -17,7 +17,7 @@ myAppModule.factory('productFactory', function() {
     //: Add method to add product
     factory.add = function(product) {
         products.push(product);
-        console.log(product);
+        console.log(product); //the product you just added
     }
     //: Delete method to remove product
     factory.remove = function(product) {
@@ -39,7 +39,6 @@ myAppModule.controller('divController', ['$scope', 'productFactory', function($s
         if ($scope.newProduct) {
             productFactory.add($scope.newProduct);
             $scope.newProduct = {};
-            console.log(newProduct);
         }
     };
     $scope.deleteProduct = function(product) {
