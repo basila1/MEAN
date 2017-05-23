@@ -1,5 +1,10 @@
 //create methods object and assign three functions to the methods object.
-var methods = {};
+var methods = module.exports = {};
+
+// a = { prop1: true };
+// b = a; -> referencing a not making a new copy
+// b.prop1 = false; -> overring what a is initially set to
+//console.log(a.prop1) -> false
 
 var output;
 
@@ -31,5 +36,5 @@ methods.areaOfRectange = function(a, b) {
 }
 
 //data contains all these methods, and exporting them to another file.
-exports.data = methods;
+module.exports.data = methods;
 exports.output = output;
