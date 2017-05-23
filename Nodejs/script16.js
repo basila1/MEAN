@@ -1,13 +1,12 @@
 var express = require('express');
+var path = require('path');
 var app = express();
-
-console.log(__dirname);
 
 app.use('/cssFiles', express.static(__dirname + '/assets'));
 
-app.get('/', function (req, res) {
-  res.send('Hello World!')
-})
+app.get('/', function (req, resp) {
+  resp.sendFile('index.html', {root: path.join(__dirname, './files')});
+});
 
 app.listen(1337, function () {
   console.log('Example app listening on port 1337!');
