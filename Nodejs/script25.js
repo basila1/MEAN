@@ -23,6 +23,9 @@ app.use(sessions({
   saveUninitialized: true
 }))
 
+app.use('/cssFiles', express.static(__dirname + '/assets'));
+
+
 app.get('/login', function (req, resp) {
   session = req.session;
   if (session.uniqueID) {
@@ -37,27 +40,36 @@ app.post('/login', function (req, resp) {
   if (session.uniqueID) {
     resp.redirect('/redirects');
   }
-  if (req.body.username == 'admin' && req.body.password == 'admin') {
+  //if (req.body.username == 'admin' && req.body.password == 'admin') {
     //create a session
     session.uniqueID = req.body.username;
-  }
+//  }
   resp.redirect('/redirects');
 });
 
 //kill session
 app.get('/logout', function(req, res) {
   req.session.destroy();
+  res.redirect('/login');
+});
+
+app.get('/admin', function(req, res) {
+  session = req.session;
+  if (session.uniqueID != 'admin') {
+    res.send('Unauthorized access');
+  }
+  res.send('Hello ' + req.session.uniqueID + ' <a href="/logout">KILL SESSION</a>');
 });
 
 app.get('/redirects', function (req, res) {
   session = req.session;
-  if (session.uniqueID) {
+  if (session.uniqueID == 'admin') {
     console.log(session.uniqueID);
     res.redirect('/admin');
   } else {
-    res.end("Who are you ")
+    res.send(req.session.uniqueID + ' not found <a href="/logout">KILL SESSION</a>');
   }
-})
+});
 
 
 app.listen(1337, function () {
