@@ -1,0 +1,17 @@
+1. use the connect module to create a new web server.
+- npm install connect
+- will get a connot GET/ response --> there isn't any middleware registered to handle the GET HTTP request.
+
+2. Connect middleware
+Connect middleware is just JavaScript function with a unique signature. Each middleware function is de ned with the following three arguments:
+• req: This is an object that holds the HTTP request information
+• res: This is an object that holds the HTTP response information and allows
+you to set the response properties
+• next: This is the next middleware function de ned in the ordered set of Connect middleware
+
+First, you added a middleware function named helloWorld(), which has three arguments: req, res, and next. In your middleware, you used the res. setHeader() method to set the response Content-Type header and the res.end() method to set the response text. Finally, you used the app.use() method to register your middleware with the Connect application.
+
+3. Mounting Connect Middleware
+Connect middleware supports a feature called mounting, which enables you to determine which request path is required for the middleware function to get executed.
+Mounting is done by adding the path argument to the app. use() method.
+First, you mounted the helloWorld() middleware to respond only to requests made to the /hello path. 
