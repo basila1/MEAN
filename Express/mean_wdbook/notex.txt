@@ -1,0 +1,5 @@
+The  rst two lines require the Express module and create a new Express application object. Then, we use the app. use() method to mount a middleware function with a speci c path, and the app. listen() method to tell the Express application to listen to the port 3000. Notice how the module.exports object is used to return the application object. This will later help us load and test our Express application.
+
+The app.use() method is used to mount a middleware function, which will respond to any HTTP request made to the root path. Inside the middleware function, the res.send() method is then used to send the response back.
+
+The res.send() method is basically an Express wrapper that sets the Content-Type header according to the response object type and then sends a response back using the Connect res.end() method
